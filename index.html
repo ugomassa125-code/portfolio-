@@ -29,15 +29,15 @@
       --radius-full: 999px;
       --font-body: 'Outfit', Arial, sans-serif;
       --font-display: 'Playfair Display', Georgia, serif;
-      --color-bg: #eff6ff;
-      --color-surface: rgba(255, 255, 255, 0.90);
-      --color-border: rgba(148, 163, 184, 0.25);
-      --color-text: #0f172a;
-      --color-text-muted: #475569;
-      --color-text-faint: #64748b;
+      --color-bg: #050810;
+      --color-surface: rgba(8, 12, 21, 0.95);
+      --color-border: rgba(148, 163, 184, 0.2);
+      --color-text: #f8fafc;
+      --color-text-muted: #cbd5e1;
+      --color-text-faint: #94a3b8;
       --color-primary: #38bdf8;
       --color-secondary: #22c55e;
-      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --shadow: 0 20px 60px rgba(2, 6, 23, 0.35);
       --container: 1150px;
     }
 
@@ -55,9 +55,9 @@
       font-family: var(--font-body);
       color: var(--color-text);
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 28%),
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
         radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 24%),
-        linear-gradient(135deg, #f8fafc 0%, #e2e8f0 45%, #cbd5e1 100%);
+        linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
       min-height: 100vh;
       line-height: 1.6;
     }
@@ -82,7 +82,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(2, 6, 23, 0.72);
       border-bottom: 1px solid var(--color-border);
     }
 
@@ -232,7 +232,7 @@
       border-radius: 22px;
       border: 1px solid var(--color-border);
       box-shadow: var(--shadow);
-      background: #f1f5f9;
+      background: #0f172a;
       padding: 0.75rem;
       display: flex;
       align-items: center;
@@ -301,18 +301,10 @@
     .chip {
       padding: 0.55rem 0.85rem;
       border-radius: var(--radius-full);
-      background: rgba(56, 189, 248, 0.14);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      color: #0f172a;
+      background: rgba(56, 189, 248, 0.09);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      color: #d9f5ff;
       font-size: var(--text-sm);
-    }
-
-    .chip a {
-      color: inherit;
-    }
-
-    .chip a:hover {
-      text-decoration: underline;
     }
 
     .tcs-image-card {
@@ -338,6 +330,40 @@
 
     .project {
       padding: var(--space-6);
+    }
+
+    .project-image-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--color-border);
+      margin-bottom: 1rem;
+      background: #0f172a;
+      padding: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .project-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+      text-align: center;
+      padding: 1rem;
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+      border-radius: 12px;
     }
 
     .project-top {
@@ -453,7 +479,7 @@
         <div>
           <div class="eyebrow">Portfolio étudiant • BTS SIO</div>
           <h1>Massa Ugo</h1>
-          <p>Étudiant en informatique, je présente ici mon parcours, mes projets, mes compétences et mes objectifs professionnels dans un portfolio moderne en une seule page.</p>
+          <p>Étudiant en informatique, je présente ici mon parcours, mes projets, mes compétences et mes objectifs professionnels dans un portfolio.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projets">Voir mes projets</a>
             <a class="btn btn-secondary" href="#contact">Me contacter</a>
@@ -463,12 +489,11 @@
         <aside class="hero-card" aria-label="Images de présentation">
           <div class="hero-images-double">
             <div class="hero-image-wrapper">
-              <img alt="Image SOMEI" src="data:image/png;base64,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" />
+              <img alt="Image SOMEI" src="data:image/png;base64,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" />
             </div>
 
             <div class="hero-image-wrapper">
-              <img alt="Image IFC" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAABLFBMVEX///8DAwT/1QDzkgDjBhMAAADiAABQUFFlZWX/1gDzkAD/0wC7u7zExMTzlAD0lgC2trZaWlvc3Nz39/fQ0NDp6enyiwDjAA/BwcHv7+///vn+9PXR0dGwsLD1ngD9ygD/7qT//fD98eD/3kj5zJX/6Yw0NDUZGRpGRkf6uAD3pwCXl5f8xQCOjo4pKSr/87//+uL/4mL/9tD/2in/+uT2s2T84cH/4FTnNz/4rwD/5nj85+h6ensWFheioqL7vQDnNQ9ycnI6OjrtawnqVAzxgAPoPQ7ymJz61tj1tLf/76j/9cr/8rf50Z797Nb/54D4wHz0oTL2q0fpRUzlGCPwhYrtbnTqVlz4yMr0ni3xk53wegb4tTjrWQrvdS70qKvtdHrmLTXrXmTlFCFs1pTXAAAMl0lEQVR4nO2daVvbyBKFQZYMlvCCd3Ntwo4TgiEhZAgDHiD7QiYTQhImNzch+f//4Wo1Wqpa3VJLsizOh8zzgGxa71QfVVdJrakpXtpZXeL2XZOut4qgrCc9iLRoT1C1m/Qo0qEdRYP1IOlhpEOHGitBuQ0tCi0XdFi3oUWjN4oBS3iY9EhSoFWTlfBH0iMZf+1arATlbdJjGXutK8JtaFFqeU+40U7Soxlz7dhYCasLSQ9nvHVoh6W8S3o4Y61HBeE2tGi1pAi3oWVoZdnngIVVwak9v09MrM7l0jn5iF0XK0FZimVk46f3TVlurhEP+Vtx08pqaH1o5nK55mPCEY4kK9OhtfCPrMKSS4RQeedhldXQWslpsHLyR/yQBwCsbBaYH2uzUJuIqG3tFgBYQuFRnKMcE62ZsHDbWvLYux5af8c6zPHQvmzCkssr4AGeJCu7oWX4e45gWw9hVlkMLdPfCbZ1iMASCpnrXVj+roeWDNgWkGRZylzvYs0GC7QtKMmylLXQ2pdzdlofPcWXPwiwMhZaNn+HbQtOsixlqy22UnLC8tgWnGRZylbv4rGTlUrrymFbC7i9Zy+0HP4O2NZbMithNbGRJ6B9d2S5bAtaQ9uVpY6r29/dtrVMtPeMhdZK2QvLnm298WMlKNnpuHr83WVbyBrarr1ETyBOef3dsK0Pxq89jYpMhxbg73bbWicmWRkLLcjf7bbla+96aGWk4wr6u2lbU9Ytt/6hlY1m/nvYsizb8kuyrNB6k/R5xCLE3w1ajxfoWAlCIROhhfi7MRFz67SwMtFxRf3dCK37VP6uaYI6rhf/QX6B+7sWWYvUrCap45o/+BP+BZy/W7Du0sMSChMTWmL+0yvwF2tEWAoDrMkJLVHMt15DvyD6+z0GVhPUFhNFsZX/4f050d/lv5hgTUzHVdRpXXp+7q6/O1iVWVCFCK1Oda7Xm+t2WD/WqHaLcza1u41gA3BJNGh9dl8USf4uP2EKLDW0DoMMrXi6IekazLZrdB9R6W7P9jc2Jbc2+9vVIGNwSjSU/+K6KJ4T8nf5DiOsIKHVndHPcnp6WvtPv+7/iWpvdsNDyaYj1gj1SLRoHTgvigR/Z0myLDGHVsUAZUmShuTjO5X5acn5GZckaSYsLXFE69NX249J/s6UZFmhxdgWq7tPW5LmCId3hhtEUOZ3nAYhZJN4Q8ueQhD8XS6xJFmW2Jr5tU3PmUsSHhe9gT8p/StC+tYNLNXmX45+TPB3xiTLElNbrAecu7SFHNyYpUKlfYXPXPaT6KD10/oxIX+X6dfQdjE18+chWH342C5dWOlfMRuKlQOWOhV/mSkE7u/yIl2JNFRoeWeheqbHYP7QpkalfsUMT1jqRdGgdYXDYk2yLLF0XAcQrE0IludKECMsMf9bSyFI+TtzkmWJoS12CsGaBw5sTDOwCn05dMNSjesryd+DJFnsoQXFi9QDDpxhYQV/RRhYKq3XU+c4rABJVoDQ8jq8tAEcNmRjxTF1uJmK/6L+LpeDJFmmGDqutQ1PUgqshWsshqV+x3Y4ViAsMf8cDaxgSZYphrZYp28Hoa6EoaDYYjKssIkDAquFz8JgSZapAsvIhvbaARwTx9QJliYsqQ0J60UJtfeASZapJaaxtbf76mlOnx1V4ApNEZ2FnorD8ewwdM0BgfW9HIG966HF2nGtNRp4KesIYaWVdI6GlaKmblUT4UtYBMJ6isEqBU6yDPHtuEJ5vsZqeptPYdQjEBbm7+HsPVBoEdSBZ6HU51AThQXCQu2drVEBhRbHtlgRZrXBwZwQQaxOEH8PlWRZ4tdxBTNSSaIoQAcVBOsZYlmB19BsodXoqsZstmUqw2GlXYctaBuEhRRyaFVrVLv1IiwQFubv4ZIsUz7PuBaP+sfeCz/Ym4FW23iJ0B9TtbJ9OnO26c07LIGwkMZO2CTLELHjWp23WjquVABKS2dBWJVApBq92bMbKpAXqgJhYZYVMsmyhIdWER+oulhx50pgxUEqspPqVMD/R1SwMH8PXslyCO+4NpDEycTgji1OsDpbAwpQGKxnMKzwSZYlrOOKZeQmBnfdgQ8cls4QBgvx9/BJliUktDrusoybg6t0xwNWY56hygPBgvN3LkmWKbjjWvUZt3TEHVadOPFpYCH2ziHJsgR3XOs+A3fXo8LDYukMwbBOkFnIx94NgaEFL18ihIWXeKhhwfm7vMgPFRJafl0t3rCqTJ0hGBbs77ySLFNQ78Jv8HSwttsuVbD1Up+RFQTrOZg5MN1y6y+wme/T16KChS1WZnrunJapgI/BgllxS7IMgQ8i+vgtHSzks5L7Dq8GdQGfAAv2dy5raLvArV+3iLTCwNJ5OfrRYM2CFRbo73KJLypV4IOIPdLdeyFhOe8erEG3UzgOpqk6gP4eommPCd5VuNab3cR4hYU1LQ1uiqj4lMcKNJubXligv0cAC+241hrdIlzXCw3LlleAxTD9mM3TYbterxpdIV01U15YkGNxTkkNkZ4Wm4sElr0yiKxDpUGPUMKn83c1tO4LBVUcYZHaYlHBGq0ukXWoNE/sdlD5u0ZLXrx3977CExghtCKHBVuW1Cd3hqj83cQly+XFJ3/d4UYM711EBWt0OQzWGaLydwewnBZidwQOwPDQigaWDQZ8BZnx6fK7YRGeQuEeYnhbLCJYGyMYcGfI7/4tOn/HQ0wJ4/toWywSWJKt8wN3hvzuoqT0d5RYKVSIYW2xCGBJjhu0oBvtp4lPvACwcH8nTsp7T4K5GPa0WAhYaIu0b690cYH1tejvJGC5xSd37yisxJDeRXBYIKfjQf/IWRTkAov0FDkFsRJziMGhFQLWsFsfybiTTV21eP4AD1i0/k4Cpk5KhuwVDq0QsOjKyjxgMfk7iVhO8/0CDTGwd5EKWOz+TiDWpAoxsMCcCljB/J0ATF1S6iGGw1Kg0EoFLIr8PRCx/64/KAjIDUtQaKUBFnr/TFhgzfOpqUfv1lcLipcY9CRBGmBx8XeQVs7YVHHh4dLhnuIkllZY/PzdQ+vqpsKwsOOYlNCTdWmAxdffnbT2HX92YdeYlIoCbmKQBlgR+PsNLe8LQ5Yfvll/B9a0UgArKn83YOVIr2dLH6zI/N2gdUX/vEAKYEXn7watfZ+xpApWhP5u0CK/VTJdsKL0dx0W9J6jlMKK1N8NWrS2Nf6wXkRrWTotStsaf1gR+7sun5fhpgdW1P5u0KKyrfGHFbW/65LLNLYVOazQfcNYYBFfhhsfLPAxIZaOdDywqGwrcljIvQ70sOIweJ2Wv21FDgu5i8bnw87ljqpSSf8nQlgUEzFyWPCTKH5P7osOvXjx7Nn370+ffvv2vNmUcxo3C2CpxI2gDL85OE5YyCZl0hlx+wyRqFardWLyswCWLRkAg8Bqvk8cFnpPqUTabYQMC8InnpzoAfhUA6jxK7v4+QJsJh9ZpH1sNraHc/YdCiqWmGHBOjmxB6BzCssjmZOw6b/miR4W/ggaehsOvFUBF7VMgP9b+7C///Gfq0UNW1NV+YP/fjTRw/Js/YYTG/0wOlgjaOZe8wsLy8vLKyvvV2i27okeFuN2gXHBGm0Uy6AYYHV8Ht5JBJYo5i+QF7AkCksNLVZaccDy7DU/HrDgykPisMT876/+Y48dVoN1IsYDS83OgBewJA1rqsj4RHlMsBx7zQeG5doZGS7gsezrwEgrLljaXvMMF8UuZL7uchP8lESXAdZUnX4jmjhhAS9gIQjcB9i9NRaUKZFe3gCJ/i0F8cIS0Xe4AQLKvh4ODWhrb2gfdKJC7nIUHS36iyLw8KR3gzrvPAyyPWK4/bOik77XPJ1c790Bt5GunblOEtuD2Q9Xpe9cBI4FLJUWtcvXz5xLfghD7XR0ksZBgd9+Uh3ObwJL50RhicAr3FC1TwfWszd9bBvp7tFgdIZnW+G2c+32tmcG3q0s4yjRwGq1mMbfqdaLxXqV+IBpo96eq8y1md9VB6vWUP+k+oWQ4oYl0s/DMVTMrFr5pE84jOJmxbTqGTfFSirP4u9jqNgw5fPixUvmKuB4KWJKBqbWxc+XX/9Ms7Ubio6Tjun3l0sVU9InyUsRUDIwXeuY0h9NdkWA6eDX5Y9XE4bJECdMxpy7+DypmAyFpWRg+nTx+d/Xk4zJUEhMresv2oVu4jEZCozp98GXnz8mzcF9xE5JnXO/LjMw5wCxzbnMYjJEh0m8vvj8UsWU9GgTFoGSYU3XmjW9ymwwOUTEdJk1B/cRZE2fDn7dzjlIzgudmoPfzjlcN5i0OZf0aMZc+fy1OuduMVHp1sDp9X8Rc82wW0OWvAAAAABJRU5ErkJggg==" />
+              <img alt="Image IFC" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAABRFBMVEX///9AQED+1QDuGyT4kx/uGib8//8nJycxMTE8PDzk5OS6uro1NTU5OTksLCzW1tajo6N+fn5hYWFvb2/+/vtHR0f90QD81gDoAABZWVmNjY35kiHr6+v29vb2lB8jIyP0jQC/v7/uABP78bz8/PPvREjwAACVlZVdXV3Nzc3JycmGhoaysrJ2dnbkAAD34mv42Bz46KD83mb46Y/6/Of72D7238PyoFD57tz799P84nj0o0HrtWvzz6H6+N34ihL531f3tHz0mSvws2H77JjykgHx0J7z3kvu29nlhoPkXGP47Oj1iyjhHyLxw8P4tBPtq6rvUFH4ohnjbXTnMTb3qxP1wIj9xgzxNCnpXBvnbmvycR3ofn/nkpP4giPwViX0vzv48rbuqEvvyIbsZRv3y8jtZEvy2bHmqqfbCA/hm5frV1/KR0rtAAAIoklEQVR4nO2b/V/TSBrA0zSZprQNLQ1JITSUUukCFdAD5WW1nre6uIAipwurAru3cq76//9+zySZyaTpG9zShvb5+hEktTHz9XmeeTKTShKCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIIhEJMOQJGPYlxErDN8KEmCQxXV0EqZmbJgPCCaPiLFomhs1VCJCHsqy+Q8y7MuIFZumJctWbdiXESfIA1OmgTLs6xgyYp4QsmVRKdbmGGcPefR4Oxi+YeyYMvyyzF1pbBs3Q9qr7NUIjxWyK0M5geSRN8d3Pq5VnMqPBPB+3NxwlcimuT6+3ex2xXGaT/wfDGnRlH3Mp+MZJ5AzT5qKolRYSSHPmBLLXB/PKgv3e/+sKIqjPIfGld4Nb8ocS94ZyziBQe8plMq/3KAgP5mClGdjGSiGVHsBRmzFab4kIIhsyYITc2fY1zcY6MCFdkR61HTAiU1LCvy0YwpxIss/E2P05x6oqcG0K9G1kicV200e2y0pu3IoTszF0XcCAyzvEyFQiFtiPSmVH6WaZQVKaMT8LI28FJhmXq39Ygilk+wpnMrLRTOcOzINlOFd7mAwyL1k9d5BECrQxfpGHMc+3JJb2SJj4SRZPdrn9zfbTeYECu2J1arEtBZHfj52nYCV195ICZTYIHeabyJhYkKgDPmSBwA4UdXk0rHXogUlFpLHNiNOwMofHU40mc9n5qKH55YXGnlKY6V8i8P4W3lL4wSkvKIVhZDHQZg40dShc49pGG3uBSdm9GxW02fDR1cKCU3XtCxF07OZAY3p/+Vt1ZfybyqlBqWVKTmMpo6r5QGJzj3lXDpB0evCwUZCzyVE5tvEURzxnajJ6luYfrYrQYl1TDMaKOBkoxZ10tD9YWs8QcpFPdGCdicCxfByx6X67kCCEuv4baz9vm2YgJSfoudpaP6wde7kh2yrkoTWGOTYboohfU8GfN3/taLYfnfinLaLEnc+ju5rzPkxoRXYkboWUZKYnxzo4G4IOKmqXvKoSbX69blte3njQHPSwQnd14gkz3JWy+Wy80UWJnNi4qRdcvOzre+KJYb0C3NydATfIDwc14liv+nsxNqMnqmcWS3UgzjI88xJa+mZKaA4eyeiJOSETj5nbNZxFKddc8Kk7PY88UyaKZlZHsA4/k4M6UM1qCfqb47i1ljHVk46KwEpm71ue3jq5O5Mp8agTtTAyUfenNinXZ3sij3KXP7+1NQMMLW6wg6lmJKONWRiIV8oTgUU6xO3Pdq+gHH5ceLW2OQF600gdbrkDiDsa0zq2VzaL6MpX8EEc5LNt/2Hy/lpXeNv896b1WIhBVpXwUkyafOG7X2nAuuzHpxkWmxW571x9XCS17LpRITs6kAG3QtCPjEn8PtMSB3L6jjvuNnzlJ2iHGpXtQX3YHcn0Q7XK8c/DGrYXQk7ueSNPVTY7k7kh2zNoMWJ175HnQil9n60w42lk3CJheake+pAoOwwKTNi7rQ64ePNJab8zj7T+hp/bzx6OkJeCU4O+TpB9wIr0zX8Z2xpbm4mpXEtnZxQLami+9p0UEqgrjJ0PVWMx7RNyDl3oiZth007pvscjtwlWkx5hz+8M5GpZ3s78e93JvlL6WyhkclkFhYWVpZXlifjs5BwzuuJeqYEuXNq9iiysvxM6FEm9X6cuC/yrj89Ex8LYbgTVSixtJF973npEinCcnV/TlK0zS+wPNNje/8jOOEllq4U2IDyQhAT9bN1zTjJTtOXivxOaEgj7o3g5CKIE7+yuGJO3pyeQmWJODGFQOnsJKcztPturhT9OElPD2nEvfkWzDu2Ekhht8fu3pcXMNRLWMoWP0tHJ+nZSZ8Jf1a5S06gi7VbnbiVxfa82M7J+1O4C7KC/dJgX6Ojk2gfewecHPPcuXScNk5obYHj7mu2feic/P5ww6JWLPi6wQrKqDr52FaJaIa6aVYekad/7G55XtiC24g5WWLrsReO3dmJ7ZZbT0+NPrJi7DxY3+IPnI+Yk2pQYiM1tm3EVB7TzTF4KzF6zzt32wktsf04gfT5k9BPw4l7pCPmpOQ7uXSUvpzABAQlhQoRlmRv4CQRfyfq527lROQ5BBR9/m90nbxeYosnin3SV5xApFT+I4X3Am/iJDeYAd6A10GcKG4b0suLNyP/GfqQz3WcrPJ7wJXWl+LCFasn6tnl5W+fP3/++PHi4vCQtrSsVxNEeZuE8PXFjeOEb7cncnGVcrXk7++oHH8V/wy4dD1RTReHcDv0wnEqzQrQ3As/E3oNJ8Itsz5dmAVWXfLxWTq4KoWd8H0N9sU96H9Xk//d3v7y5cnLL9vkpk6kKWEbIxeQTcVjK0MScqcDniBO9XvZe+46vDd6HSfLndaoU3HJpbZO/PwJhY73/aj67oDU6IfTQ2e5jhOp3n57J5GrR//uEDBIrzhpw1X0cVC+8Kx7e15z812cSPVUm13AbnvLg+UmTtjTtAJltvCc8tedE/6oU20r58p0y9N/3t9duN2x9onRs55EoE/T/hWRsqxrtE7ON1p+7vRfv1DUUlo2J9bY+fu3N87rcB0nwWSULEV3p8qZ+upsI9idKDdmC13n1/JkJj+7WuDU4/LsjiHtXyNO/CkInBwM+8Jvkb6dqHxOrpaWkt9G+aH7/p2AjGqptPbuw/nr/fIoK4F5p8VJ0KKprIEFG0ultaN7H76BDdqWjLYRibRxwps0N1HAxttPx1d+bIy4Dg/joJQMuvfgT1WIja/vvn/662qUy2l7jIM14Y7GDY1qdQ1snIMNQvxPlZLR/8SbADhhTYeXKF7ZcG/zCLT+EvtU3PhIIVKt5IVGqGyMNRAFx+rR9/NjSBTJzZHR/6xsL4JawVSgE14rDHSCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAgyVP4HRtn5cXxUv4wAAAAASUVORK5CYII= />
             </div>
           </div>
         </aside>
@@ -484,7 +509,7 @@ zAP/dnKa8fovjGJVRh7wDY2tC7Ak8SpCcPqfJcnz8+FwN/ORxiU+OZKysrEfTKQ9jfCSI3S0mdxJsJiV
         <div class="grid-2">
           <article class="card">
             <h3>Qui suis-je ?</h3>
-            <p>Je m'appelle Massa Ugo. Je suis étudiant et passionné par l'informatique, avec un intérêt pour les systèmes, les réseaux, la cybersécurité et le développement web.</p>
+            <p>Je m'appelle Massa Ugo. Je suis étudiant et passionné par l'informatique, avec un intérêt pour les systèmes, les réseaux, la cybersécurité et le développement web, avant j'etais en BTS mécanique ce qui m'a deplut car je ne trouvais pas ca interressant donc j'ai decidé de me réorienté dasn l'informatique.</p>
           </article>
           <article class="card">
             <h3>Mes qualités</h3>
@@ -503,7 +528,7 @@ zAP/dnKa8fovjGJVRh7wDY2tC7Ak8SpCcPqfJcnz8+FwN/ORxiU+OZKysrEfTKQ9jfCSI3S0mdxJsJiV
         <div class="grid-2">
           <article class="card">
             <h3>La formation</h3>
-            <p>Le BTS SIO est une formation orientée vers l'informatique professionnelle, avec des compétences en support, développement, infrastructures et gestion des services numériques.</p>
+            <p>Le BTS SIO/SISSR te donne des bases en support informatique, systèmes et réseaux, développement, La formation est conçue pour être concrète et professionnalisante, avec des projets, de la pratique et souvent de l’alternance ou des stages. Selon les établissements, on trouve généralement entre 10 et 12 semaines de stage sur les deux ans. L’objectif est que tu sois capable de répondre à des besoins réels d’entreprise, pas seulement d’apprendre la théorie.</p>
           </article>
           <article class="card">
             <h3>Ce que j'y développe</h3>
@@ -528,9 +553,11 @@ zAP/dnKa8fovjGJVRh7wDY2tC7Ak8SpCcPqfJcnz8+FwN/ORxiU+OZKysrEfTKQ9jfCSI3S0mdxJsJiV
         </div>
 
         <article class="card tcs-image-card">
-          <div class="chips">
-            <span class="chip"><a href="tableau_synthese_massa_ugo.pdf" target="_blank" style="color: inherit;">📥 Télécharger TCS</a></span>
-          </div>
+          <img
+            src="tableau_synthese_massa_ugo_page1.jpg"
+            alt="Tableau de synthèse des réalisations professionnelles Massa Ugo"
+            class="tcs-image"
+          />
         </article>
       </div>
     </section>
@@ -539,123 +566,61 @@ zAP/dnKa8fovjGJVRh7wDY2tC7Ak8SpCcPqfJcnz8+FwN/ORxiU+OZKysrEfTKQ9jfCSI3S0mdxJsJiV
       <div class="container">
         <div class="section-title">
           <h2>Projets</h2>
-          <p>Procédures et documentations techniques réalisées.</p>
+          <p>Quelques exemples de réalisations à présenter.</p>
         </div>
 
         <div class="project-list">
           <article class="project">
+            <div class="project-image-wrapper">
+              <div class="project-image-placeholder">Image du projet Portfolio personnel à ajouter ici</div>
+            </div>
             <div class="project-top">
               <div>
-                <h3>Schéma Réseau</h3>
-                <p>Architecture réseau - Infrastructure Infra S4P2 avec pfsense, vlan, switch et virtualisation PROXMOX.</p>
+                <h3>Portfolio personnel</h3>
+                <p>Création d'un site web responsive pour présenter mon profil, ma formation et mes compétences.</p>
               </div>
-              <span class="project-tag">Infrastructure</span>
-            </div>
-            <div style="width: 100%; overflow-x: auto; margin-bottom: 1rem; border-radius: 14px; border: 1px solid var(--color-border); background: #fff; padding: 1rem;">
-              <img src="schema_reseau.png" alt="Schéma d'architecture réseau Massa Ugo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+              <span class="project-tag">HTML • CSS</span>
             </div>
             <div class="chips">
-              <span class="chip">Topologie réseau</span>
-              <span class="chip">VLAN</span>
-              <span class="chip">Virtualisation</span>
+              <span class="chip">Responsive design</span>
+              <span class="chip">Navigation one-page</span>
+              <span class="chip">UI moderne</span>
             </div>
           </article>
 
           <article class="project">
+            <div class="project-image-wrapper">
+              <div class="project-image-placeholder">Schéma réseau à ajouter ici</div>
+            </div>
             <div class="project-top">
               <div>
-                <h3>Procédure AD2</h3>
-                <p>Installation contrôleur de domaine secondaire.</p>
+                <h3>Schéma réseaux</h3>
+                <p>Réalisation d’un schéma réseau permettant de représenter l’infrastructure, les équipements et l’organisation des connexions.</p>
               </div>
-              <span class="project-tag">Documentation</span>
+              <span class="project-tag">Réseaux</span>
             </div>
             <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureAD2.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Réplication</span>
+              <span class="chip">Topologie</span>
+              <span class="chip">Infrastructure</span>
+              <span class="chip">Organisation réseau</span>
             </div>
           </article>
 
           <article class="project">
+            <div class="project-image-wrapper">
+              <div class="project-image-placeholder">Capture de la procédure à ajouter ici</div>
+            </div>
             <div class="project-top">
               <div>
-                <h3>Procédure GLPI</h3>
-                <p>Installation et configuration de la plateforme GLPI.</p>
+                <h3>Procédure</h3>
+                <p>Création d’une procédure claire pour expliquer une intervention, une installation ou une manipulation technique étape par étape.</p>
               </div>
               <span class="project-tag">Documentation</span>
             </div>
             <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureGLPI.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Support IT</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <div>
-                <h3>Procédure Zabbix</h3>
-                <p>Installation de la plateforme de monitoring Zabbix.</p>
-              </div>
-              <span class="project-tag">Documentation</span>
-            </div>
-            <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureZABBIX.pdf.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Monitoring</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <div>
-                <h3>Procédure Exchange</h3>
-                <p>Configuration du serveur de messagerie Microsoft Exchange.</p>
-              </div>
-              <span class="project-tag">Documentation</span>
-            </div>
-            <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureExchange.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Messagerie</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <div>
-                <h3>Procédure Artica</h3>
-                <p>Configuration de la solution de sécurité Artica.</p>
-              </div>
-              <span class="project-tag">Documentation</span>
-            </div>
-            <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureArtica.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Sécurité</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <div>
-                <h3>Procédure PROXMOX</h3>
-                <p>Installation de la plateforme de virtualisation PROXMOX.</p>
-              </div>
-              <span class="project-tag">Documentation</span>
-            </div>
-            <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureVMPROXMOX.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">Virtualisation</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <div>
-                <h3>Procédure AD1 Alt</h3>
-                <p>Variante de la procédure d'installation Active Directory.</p>
-              </div>
-              <span class="project-tag">Documentation</span>
-            </div>
-            <div class="chips">
-              <span class="chip"><a href="MassaUgoE6ProcedureAD1 (1).pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
-              <span class="chip">AD</span>
+              <span class="chip">Méthodologie</span>
+              <span class="chip">Étapes</span>
+              <span class="chip">Support technique</span>
             </div>
           </article>
         </div>
@@ -666,39 +631,7 @@ zAP/dnKa8fovjGJVRh7wDY2tC7Ak8SpCcPqfJcnz8+FwN/ORxiU+OZKysrEfTKQ9jfCSI3S0mdxJsJiV
       <div class="container">
         <div class="section-title">
           <h2>Certifications</h2>
-          <p>Certifications et formations suivies en réseau et informatique.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>CCNA : Présentation des réseaux</h3>
-            <p>Cours Cisco Certified Network Associate - Introduction aux concepts fondamentaux des réseaux.</p>
-            <div class="chips" style="margin-top: 1rem;">
-              <span class="chip">Cisco</span>
-              <span class="chip">Réseaux</span>
-              <span class="chip">21 mars 2026</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Examen Network Technician Career Path</h3>
-            <p>Certification examen professionnel pour technicien réseau - Parcours carrière validé.</p>
-            <div class="chips" style="margin-top: 1rem;">
-              <span class="chip">Technicien Réseau</span>
-              <span class="chip">Certification</span>
-              <span class="chip">28 janv. 2026</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Notions de base sur les réseaux</h3>
-            <p>Cours fondamental couvrant les principes essentiels de l'architecture et du fonctionnement des réseaux.</p>
-            <div class="chips" style="margin-top: 1rem;">
-              <span class="chip">Fondamentaux</span>
-              <span class="chip">Réseaux</span>
-              <span class="chip">07 nov. 2025</span>
-            </div>
-          </article>
+          <p>Cette section sera mise à jour avec mes futures certifications.</p>
         </div>
       </div>
     </section>

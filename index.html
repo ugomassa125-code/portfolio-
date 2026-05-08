@@ -1,46 +1,735 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Massa Ugo</title>
+  <meta name="description" content="Portfolio de Massa Ugo, étudiant en BTS SIO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
-    .container { max-width: 900px; margin: 0 auto; background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-    h1 { color: #333; }
-    .notice { margin-bottom: 24px; padding: 16px; background: #e8f0fe; border-left: 4px solid #4a90e2; }
-    .doc-list { list-style: none; padding: 0; }
-    .doc-list li { margin-bottom: 12px; }
-    .doc-list a { color: #1a73e8; text-decoration: none; }
-    .doc-list a:hover { text-decoration: underline; }
+    :root {
+      --text-sm: 0.95rem;
+      --text-base: 1rem;
+      --text-lg: 1.3rem;
+      --text-xl: 2rem;
+      --text-hero: clamp(3rem, 8vw, 6rem);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 999px;
+      --font-body: 'Outfit', Arial, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --color-bg: #0b1020;
+      --color-surface: rgba(15, 23, 42, 0.85);
+      --color-border: rgba(148, 163, 184, 0.2);
+      --color-text: #f8fafc;
+      --color-text-muted: #cbd5e1;
+      --color-text-faint: #94a3b8;
+      --color-primary: #38bdf8;
+      --color-secondary: #22c55e;
+      --shadow: 0 20px 60px rgba(2, 6, 23, 0.35);
+      --container: 1150px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 24%),
+        linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.72);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--color-primary), #60a5fa);
+      color: #02131d;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      padding: 0.6rem 0.9rem;
+      border-radius: var(--radius-full);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--color-text);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    main section {
+      display: none;
+      padding: 4.5rem 0;
+    }
+
+    main section.active {
+      display: block;
+    }
+
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #bae6fd;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      line-height: 0.95;
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .hero p {
+      text-align: center;
+      color: var(--color-text-muted);
+      max-width: 60ch;
+      margin: 0 auto var(--space-8);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #04111d;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--color-border);
+      color: var(--color-text);
+    }
+
+    .hero-card,
+    .card,
+    .project {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: var(--space-6);
+    }
+
+    .hero-images-double {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow);
+      background: #0f172a;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .section-title {
+      margin-bottom: var(--space-8);
+    }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title p {
+      color: var(--color-text-faint);
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: var(--space-6);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: var(--space-6);
+    }
+
+    .card h3,
+    .project h3 {
+      font-size: var(--text-lg);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p,
+    .project p {
+      color: var(--color-text-muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: var(--space-4);
+    }
+
+    .chip {
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.09);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      color: #d9f5ff;
+      font-size: var(--text-sm);
+    }
+
+    .chip a {
+      color: inherit;
+    }
+
+    .chip a:hover {
+      text-decoration: underline;
+    }
+
+    .tcs-image-card {
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .tcs-image {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .project-list {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .project {
+      padding: var(--space-6);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.24);
+      color: #bbf7d0;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .contact-links a {
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+    }
+
+    .site-footer {
+      padding: 2rem 0 2.5rem;
+      text-align: center;
+      color: var(--color-text-faint);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .project-top {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-images-double {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 13vw, 4.4rem);
+      }
+
+      .nav-links {
+        gap: 0.35rem;
+      }
+
+      .nav-links a {
+        padding: 0.45rem 0.7rem;
+      }
+
+      .tcs-image {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Portfolio</h1>
-    <div class="notice">
-      <p>Voici tous les PDF ajoutés à ton portfolio. Clique sur un document pour l’ouvrir.</p>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#accueil" class="logo" aria-label="Accueil">MU</a>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#apropos">À propos de moi</a></li>
+          <li><a href="#bts-sio">BTS SIO</a></li>
+          <li><a href="#tcs">TCS</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <h2>TCS</h2>
-    <ul class="doc-list">
-      <li><a href="tableau_synthese_massa_ugo.pdf" target="_blank">tableau_synthese_massa_ugo.pdf</a></li>
-    </ul>
-    <h2>Projets</h2>
-    <ul class="doc-list">
-      <li><a href="MassaUgoE6ProcedureAD1.pdf" target="_blank">MassaUgoE6ProcedureAD1.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureAD1 (1).pdf" target="_blank">MassaUgoE6ProcedureAD1 (1).pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureAD2.pdf" target="_blank">MassaUgoE6ProcedureAD2.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureArtica.pdf" target="_blank">MassaUgoE6ProcedureArtica.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureExchange.pdf" target="_blank">MassaUgoE6ProcedureExchange.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureGLPI.pdf" target="_blank">MassaUgoE6ProcedureGLPI.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureVMPROXMOX.pdf" target="_blank">MassaUgoE6ProcedureVMPROXMOX.pdf</a></li>
-      <li><a href="MassaUgoE6ProcedureZABBIX.pdf.pdf" target="_blank">MassaUgoE6ProcedureZABBIX.pdf.pdf</a></li>
-    </ul>
-    <p>Pour ajouter un nouveau document :</p>
-    <ol>
-      <li>Copiez le fichier PDF ou DOC dans ce dossier.</li>
-      <li>Modifiez ce fichier <code>index.html</code> pour ajouter un lien vers le nouveau document.</li>
-    </ol>
-  </div>
+  </header>
+
+  <main>
+    <section class="hero active" id="accueil">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Portfolio étudiant • BTS SIO</div>
+          <h1>Massa Ugo</h1>
+          <p>Étudiant en informatique, je présente ici mon parcours, mes projets, mes compétences et mes objectifs professionnels dans un portfolio moderne en une seule page.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projets">Voir mes projets</a>
+            <a class="btn btn-secondary" href="#contact">Me contacter</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Images de présentation">
+          <div class="hero-images-double">
+            <div class="hero-image-wrapper">
+              <img alt="Image SOMEI" src="data:image/png;base64,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" />
+            </div>
+
+            <div class="hero-image-wrapper">
+              <img alt="Image IFC" src="data:image/png;base64,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" />
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="apropos">
+      <div class="container">
+        <div class="section-title">
+          <h2>À propos de moi</h2>
+          <p>Une courte présentation personnelle.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Qui suis-je ?</h3>
+            <p>Je m'appelle Massa Ugo. Je suis étudiant et passionné par l'informatique, avec un intérêt pour les systèmes, les réseaux, la cybersécurité et le développement web.</p>
+          </article>
+          <article class="card">
+            <h3>Mes qualités</h3>
+            <p>Curieux, motivé et rigoureux, je cherche à progresser à travers des projets concrets, l'apprentissage technique et la réalisation d'un portfolio professionnel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="bts-sio">
+      <div class="container">
+        <div class="section-title">
+          <h2>BTS SIO</h2>
+          <p>Présentation de la formation Services Informatiques aux Organisations.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>La formation</h3>
+            <p>Le BTS SIO est une formation orientée vers l'informatique professionnelle, avec des compétences en support, développement, infrastructures et gestion des services numériques.</p>
+          </article>
+          <article class="card">
+            <h3>Ce que j'y développe</h3>
+            <div class="chips">
+              <span class="chip">Réseaux</span>
+              <span class="chip">Systèmes</span>
+              <span class="chip">Support</span>
+              <span class="chip">Sécurité</span>
+              <span class="chip">Développement web</span>
+              <span class="chip">Gestion de projet</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tcs">
+      <div class="container">
+        <div class="section-title">
+          <h2>TCS</h2>
+          <p>Tableau de synthèse des réalisations professionnelles.</p>
+        </div>
+
+        <article class="card tcs-image-card">
+          <div class="chips">
+            <span class="chip"><a href="tableau_synthese_massa_ugo.pdf" target="_blank" style="color: inherit;">📥 Télécharger TCS</a></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projets">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projets</h2>
+          <p>Procédures et documentations techniques réalisées.</p>
+        </div>
+
+        <div class="project-list">
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure AD1</h3>
+                <p>Installation et configuration d'un contrôleur de domaine Active Directory.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureAD1.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Active Directory</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure AD2</h3>
+                <p>Installation contrôleur de domaine secondaire.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureAD2.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Réplication</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure GLPI</h3>
+                <p>Installation et configuration de la plateforme GLPI.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureGLPI.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Support IT</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure Zabbix</h3>
+                <p>Installation de la plateforme de monitoring Zabbix.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureZABBIX.pdf.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Monitoring</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure Exchange</h3>
+                <p>Configuration du serveur de messagerie Microsoft Exchange.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureExchange.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Messagerie</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure Artica</h3>
+                <p>Configuration de la solution de sécurité Artica.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureArtica.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Sécurité</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure PROXMOX</h3>
+                <p>Installation de la plateforme de virtualisation PROXMOX.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureVMPROXMOX.pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">Virtualisation</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Procédure AD1 Alt</h3>
+                <p>Variante de la procédure d'installation Active Directory.</p>
+              </div>
+              <span class="project-tag">Documentation</span>
+            </div>
+            <div class="chips">
+              <span class="chip"><a href="MassaUgoE6ProcedureAD1 (1).pdf" target="_blank" style="color: inherit;">📄 Consulter</a></span>
+              <span class="chip">AD</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-title">
+          <h2>Certifications</h2>
+          <p>Cette section sera mise à jour avec mes futures certifications.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Mes liens professionnels et mes coordonnées.</p>
+        </div>
+        <div class="card contact-box">
+          <div>
+            <h3>Entrer en contact</h3>
+            <p>Tu peux me contacter directement par email ou consulter mes profils professionnels ci-dessous.</p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:ugomassa125@gmail.com">ugomassa125@gmail.com</a>
+            <a href="https://github.com/ugomassa125-code" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7453737663809011712/?origin=NETWORK_CONVERSATIONS" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 • Portfolio de Massa Ugo</p>
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("main section");
+    const navLinks = document.querySelectorAll(".nav-links a, .logo");
+
+    function showSection(id) {
+      const targetId = id || "accueil";
+      sections.forEach(section => {
+        section.classList.toggle("active", section.id === targetId);
+      });
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+        const hash = href.startsWith("#") ? href.slice(1) : "";
+        link.classList.toggle("active", hash === targetId);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function syncFromHash() {
+      const hash = window.location.hash.replace("#", "");
+      showSection(hash || "accueil");
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const id = href.slice(1);
+          window.location.hash = id;
+          showSection(id);
+        }
+      });
+    });
+
+    window.addEventListener("hashchange", syncFromHash);
+    window.addEventListener("DOMContentLoaded", syncFromHash);
+    syncFromHash();
+  </script>
 </body>
 </html>

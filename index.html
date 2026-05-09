@@ -262,18 +262,10 @@
       color: var(--color-text-faint);
     }
 
-    .grid-2,
-    .grid-3 {
-      display: grid;
-      gap: var(--space-6);
-    }
-
     .grid-2 {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
     }
 
     .card {
@@ -419,7 +411,6 @@
     @media (max-width: 960px) {
       .hero-grid,
       .grid-2,
-      .grid-3,
       .contact-box {
         grid-template-columns: 1fr;
       }
@@ -477,7 +468,6 @@
   </header>
 
   <main>
-    <!-- ACCUEIL -->
     <section class="hero active" id="accueil">
       <div class="container hero-grid">
         <div>
@@ -493,17 +483,16 @@
         <aside class="hero-card" aria-label="Images de présentation">
           <div class="hero-images-double">
             <div class="hero-image-wrapper">
-              <img alt="Image SOMEI" src="data:image/png;base64, ...TON_IMAGE_SOMEI_BASE64..." />
+              <div class="project-image-placeholder">Image SOMEI à remettre ici</div>
             </div>
             <div class="hero-image-wrapper">
-              <img alt="Image IFC" src="data:image/png;base64, ...TON_IMAGE_IFC_BASE64..." />
+              <div class="project-image-placeholder">Image IFC à remettre ici</div>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- A PROPOS -->
     <section id="apropos">
       <div class="container">
         <div class="section-title">
@@ -513,7 +502,7 @@
         <div class="grid-2">
           <article class="card">
             <h3>Qui suis-je ?</h3>
-            <p>Je m'appelle Massa Ugo. Je suis étudiant et passionné par l'informatique, avec un intérêt pour les systèmes, les réseaux, la cybersécurité et le développement web. Avant, j'étais en BTS mécanique, ce qui m'a déplu, donc j'ai décidé de me réorienter dans l'informatique.</p>
+            <p>Je m'appelle Massa Ugo. Je suis étudiant et passionné par l'informatique, avec un intérêt pour les systèmes, les réseaux, la cybersécurité et le développement web. Avant, j'étais en BTS mécanique, mais cette voie ne me correspondait pas. J'ai donc choisi de me réorienter dans l'informatique.</p>
           </article>
           <article class="card">
             <h3>Mes qualités</h3>
@@ -523,7 +512,6 @@
       </div>
     </section>
 
-    <!-- BTS SIO -->
     <section id="bts-sio">
       <div class="container">
         <div class="section-title">
@@ -533,7 +521,7 @@
         <div class="grid-2">
           <article class="card">
             <h3>La formation</h3>
-            <p>Le BTS SIO/SISR donne des bases en support informatique, systèmes et réseaux, développement. La formation est conçue pour être concrète et professionnalisante, avec des projets, de la pratique et souvent de l’alternance ou des stages. L’objectif est de répondre à des besoins réels d’entreprise, pas seulement d’apprendre la théorie.</p>
+            <p>Le BTS SIO option SISR permet d’acquérir des compétences en support informatique, systèmes, réseaux et sécurité. La formation repose sur des projets, de la pratique et des mises en situation professionnelles afin de répondre à des besoins réels d’entreprise.</p>
           </article>
           <article class="card">
             <h3>Ce que j'y développe</h3>
@@ -542,7 +530,7 @@
               <span class="chip">Systèmes</span>
               <span class="chip">Support</span>
               <span class="chip">Sécurité</span>
-              <span class="chip">Développement web</span>
+              <span class="chip">Virtualisation</span>
               <span class="chip">Gestion de projet</span>
             </div>
           </article>
@@ -550,7 +538,6 @@
       </div>
     </section>
 
-    <!-- TCS -->
     <section id="tcs">
       <div class="container">
         <div class="section-title">
@@ -564,6 +551,9 @@
             alt="Tableau de synthèse des réalisations professionnelles Massa Ugo"
             class="tcs-image"
           />
+          <p style="text-align:center; color: var(--color-text-faint); margin-top: 1rem;">
+            Les documents présents dans la section Projets correspondent aux réalisations techniques référencées dans ce tableau.
+          </p>
           <div style="text-align:center; margin-top:1rem;">
             <a href="tableau_synthese_massa_ugo-9.pdf"
                target="_blank"
@@ -576,96 +566,81 @@
       </div>
     </section>
 
-    <!-- PROJETS -->
     <section id="projets">
-      <div class="container">
-        <div class="section-title">
-          <h2>Projets</h2>
-          <p>Quelques exemples de réalisations à présenter.</p>
+  <div class="container">
+    <div class="section-title">
+      <h2>Projets</h2>
+      <p>Procédures techniques et schéma réseau réalisés dans le cadre du BTS SIO.</p>
+    </div>
+
+    <div class="project-list">
+
+      <!-- Procédures AD / Exchange / Proxmox -->
+      <article class="project">
+        <div class="project-top">
+          <div>
+            <h3>Procédures d'administration système</h3>
+            <p>Ces procédures documentent les réalisations associées à l'administration d'Active Directory, d'Exchange et de la virtualisation Proxmox, telles qu'elles apparaissent dans mon tableau de synthèse.</p>
+          </div>
+          <span class="project-tag">Administration</span>
         </div>
-
-        <div class="project-list">
-          <!-- Procédures AD / Exchange / Proxmox -->
-          <article class="project">
-            <div class="project-image-wrapper">
-              <div class="project-image-placeholder">
-                Procédures AD / Exchange / Proxmox (PDF)
-              </div>
-            </div>
-            <div class="project-top">
-              <div>
-                <h3>Procédures d’administration système</h3>
-                <p>Rédaction de procédures détaillées pour l’installation, la configuration et l’administration d’Active Directory, d’Exchange et de la virtualisation Proxmox.</p>
-              </div>
-              <span class="project-tag">Administration</span>
-            </div>
-            <div class="chips">
-              <a class="chip" href="MassaUgoE6ProcedureAD1-1.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure AD-1
-              </a>
-              <a class="chip" href="MassaUgoE6ProcedureAD2-2.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure AD-2
-              </a>
-              <a class="chip" href="MassaUgoE6ProcedureExchange-4.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure Exchange
-              </a>
-              <a class="chip" href="MassaUgoE6ProcedureVMPROXMOX-6.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure VM Proxmox
-              </a>
-            </div>
-          </article>
-
-          <!-- Procédures GLPI / Zabbix / Artica -->
-          <article class="project">
-            <div class="project-image-wrapper">
-              <div class="project-image-placeholder">
-                Procédures GLPI / Zabbix / Artica (PDF)
-              </div>
-            </div>
-            <div class="project-top">
-              <div>
-                <h3>Procédures outils d’infrastructure</h3>
-                <p>Documentation des solutions de supervision, de gestion de parc et de filtrage : Zabbix, GLPI et Artica.</p>
-              </div>
-              <span class="project-tag">Infrastructure</span>
-            </div>
-            <div class="chips">
-              <a class="chip" href="MassaUgoE6ProcedureGLPI-5.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure GLPI
-              </a>
-              <a class="chip" href="MassaUgoE6ProcedureZABBIX.pdf-7.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure Zabbix
-              </a>
-              <a class="chip" href="MassaUgoE6ProcedureArtica-3.pdf" target="_blank" rel="noopener noreferrer">
-                Procédure Artica
-              </a>
-            </div>
-          </article>
-
-          <!-- Schéma réseau -->
-          <article class="project">
-            <div class="project-image-wrapper">
-              <img src="schema_reseau-8.jpg"
-                   alt="Schéma réseau de l’infrastructure BTS SIO Massa Ugo" />
-            </div>
-            <div class="project-top">
-              <div>
-                <h3>Schéma réseau</h3>
-                <p>Conception d’un schéma réseau complet représentant l’architecture pfSense, le switch, Proxmox et les différentes machines virtuelles (AD, GLPI, Zabbix, Artica, Xivo, Unifi, Kali).</p>
-              </div>
-              <span class="project-tag">Réseaux</span>
-            </div>
-            <div class="chips">
-              <span class="chip">Topologie</span>
-              <span class="chip">VLAN</span>
-              <span class="chip">Supervision</span>
-            </div>
-          </article>
+        <p style="color: var(--color-text-faint); margin-bottom: 0.75rem;">
+          Chaque document décrit étape par étape la mise en place ou la gestion du service, afin de pouvoir justifier les compétences mobilisées en E6.
+        </p>
+        <div class="chips">
+          <a class="chip" href="MassaUgoE6ProcedureAD1-1.pdf" target="_blank" rel="noopener noreferrer">Procédure AD-1</a>
+          <a class="chip" href="MassaUgoE6ProcedureAD2-2.pdf" target="_blank" rel="noopener noreferrer">Procédure AD-2</a>
+          <a class="chip" href="MassaUgoE6ProcedureExchange-4.pdf" target="_blank" rel="noopener noreferrer">Procédure Exchange</a>
+          <a class="chip" href="MassaUgoE6ProcedureVMPROXMOX-6.pdf" target="_blank" rel="noopener noreferrer">Procédure VM Proxmox</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- CERTIFICATIONS -->
+      <!-- Procédures GLPI / Zabbix / Artica -->
+      <article class="project">
+        <div class="project-top">
+          <div>
+            <h3>Procédures outils d'infrastructure</h3>
+            <p>Ces procédures détaillent la mise en place et l'utilisation de GLPI, Zabbix et Artica, en lien direct avec les réalisations de supervision et de gestion de parc référencées dans mon TCS.</p>
+          </div>
+          <span class="project-tag">Infrastructure</span>
+        </div>
+        <p style="color: var(--color-text-faint); margin-bottom: 0.75rem;">
+          Elles servent de support pour expliquer au jury comment j'ai configuré et exploité ces outils en situation professionnelle ou en TP.
+        </p>
+        <div class="chips">
+          <a class="chip" href="MassaUgoE6ProcedureGLPI-5.pdf" target="_blank" rel="noopener noreferrer">Procédure GLPI</a>
+          <a class="chip" href="MassaUgoE6ProcedureZABBIX.pdf-7.pdf" target="_blank" rel="noopener noreferrer">Procédure Zabbix</a>
+          <a class="chip" href="MassaUgoE6ProcedureArtica-3.pdf" target="_blank" rel="noopener noreferrer">Procédure Artica</a>
+        </div>
+      </article>
+
+      <!-- Schéma réseau -->
+      <article class="project">
+        <div class="project-image-wrapper">
+          <img src="schema_reseau-8.jpg"
+               alt="Schéma réseau de l'infrastructure BTS SIO Massa Ugo" />
+        </div>
+        <div class="project-top">
+          <div>
+            <h3>Schéma réseau</h3>
+            <p>Schéma global de l'infrastructure mettant en évidence pfSense, le switch, Proxmox et l'ensemble des machines virtuelles (AD, GLPI, Zabbix, Artica, Xivo, Unifi, Kali).</p>
+          </div>
+          <span class="project-tag">Réseaux</span>
+        </div>
+        <p style="color: var(--color-text-faint); margin-bottom: 0.75rem;">
+          Ce schéma illustre l'architecture utilisée pour les projets décrits dans mes procédures et permet de situer chaque service dans le réseau.
+        </p>
+        <div class="chips">
+          <span class="chip">Topologie</span>
+          <span class="chip">VLAN</span>
+          <span class="chip">Supervision</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
     <section id="certifications">
       <div class="container">
         <div class="section-title">
@@ -675,7 +650,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <div class="container">
         <div class="section-title">

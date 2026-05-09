@@ -616,23 +616,28 @@
 
       <!-- Schéma réseau -->
       <article class="project">
-        <div class="project-image-wrapper">
-          <img src="schema_reseau-8.jpg"
-               alt="Schéma réseau de l'infrastructure BTS SIO Massa Ugo" />
+        <div class="project-image-wrapper" style="aspect-ratio: unset; height: auto; padding: 1rem;">
+          <img
+            src="schema_reseau_massa_ugo.png"
+            alt="Architecture réseau Infra S4P2 - Massa Ugo"
+            style="width:100%; height:auto; object-fit:contain; border-radius:12px;"
+          />
         </div>
-        <div class="project-top">
+        <div class="project-top" style="margin-top: 1rem;">
           <div>
-            <h3>Schéma réseau</h3>
-            <p>Schéma global de l'infrastructure mettant en évidence pfSense, le switch, Proxmox et l'ensemble des machines virtuelles (AD, GLPI, Zabbix, Artica, Xivo, Unifi, Kali).</p>
+            <h3>Schéma réseau — Architecture Infra S4P2</h3>
+            <p>Schéma global de l'infrastructure mettant en évidence pfSense (WAN/LAN), le switch Netgear avec VLAN 10, Proxmox et l'ensemble des machines virtuelles : AD-1/Exchange, AD-2, GLPI, Zabbix, Artica, XIVO, Unifi et Kali.</p>
           </div>
           <span class="project-tag">Réseaux</span>
         </div>
         <p style="color: var(--color-text-faint); margin-bottom: 0.75rem;">
-          Ce schéma illustre l'architecture utilisée pour les projets décrits dans mes procédures et permet de situer chaque service dans le réseau.
+          Ce schéma illustre l'architecture utilisée pour les projets décrits dans mes procédures et permet de situer chaque service dans le réseau (plage 192.168.17.0/24).
         </p>
         <div class="chips">
-          <span class="chip">Topologie</span>
-          <span class="chip">VLAN</span>
+          <span class="chip">pfSense</span>
+          <span class="chip">VLAN 10</span>
+          <span class="chip">Proxmox</span>
+          <span class="chip">Active Directory</span>
           <span class="chip">Supervision</span>
         </div>
       </article>
